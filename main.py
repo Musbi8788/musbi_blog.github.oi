@@ -9,6 +9,7 @@ from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user, login_manager
 from forms import CreatePostForm, RegisterForm, Login, CommentForm
 from flask_gravatar import Gravatar
+import os
 
 from sqlalchemy import Table, Column, Integer, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
@@ -16,7 +17,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.getenv("secret_key")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
